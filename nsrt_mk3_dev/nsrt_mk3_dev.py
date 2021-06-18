@@ -111,7 +111,7 @@ class NsrtMk3Dev:
         Returns:
             True if succeeded otherwise False
         """
-        reply = self._command_reply(0x00000020, 0, 1, weighting.value)
+        reply = self._command_reply(0x00000020, 0, 1, [weighting.value])
 
         return reply[0] == self.ACK
 
@@ -140,7 +140,7 @@ class NsrtMk3Dev:
         if not ((frequency == 32000) or (frequency == 48000)):
             raise ValueError(f'{frequency} not supported. Value can only be 32000 or 48000')
 
-        reply = self._command_reply(0x00000020, 0, 1, struct.pack('<H', frequency))
+        reply = self._command_reply(0x00000021, 0, 1, struct.pack('<H', frequency))
 
         return reply[0] == self.ACK
 
