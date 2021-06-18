@@ -36,8 +36,11 @@ def test_frequency(nsrt, frequency):
 
 
 def test_frequency_exception(nsrt):
-    with pytest.raises(Exception) as e_info:
-        nsrt.write_fs(25000)
+    frequency = 25000
+    with pytest.raises(ValueError) as exception_info:
+        nsrt.write_fs(frequency)
+
+    assert str(exception_info.value) == f'{frequency} not supported. Value can only be 32000 or 48000'
 
 
 @pytest.mark.parametrize('tau', [1, 0.5, 0.125])
@@ -48,7 +51,7 @@ def test_tau(nsrt, tau):
 
 def test_device_parameters(nsrt):
     model = nsrt.read_model()
-    serial_number  = nsrt.read_sn()
+    serial_number = nsrt.read_sn()
     firmware_revision = nsrt.read_fw_rev()
     date_of_birth = nsrt.read_dob()
     date_of_calibration = nsrt.read_doc()
