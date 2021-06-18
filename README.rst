@@ -60,4 +60,4 @@ Usage
        leq_level = nsrt.read_leq()
        weighting = nsrt.read_weighting()
        weighted_level = nsrt.read_level()
-       print(f'current leq level: {leq_level} dB, {weighting} value: {weighted_level}')
+       print(f'current leq level: {leq_level:0.2f} dB, {weighting} value: {weighted_level:0.2f}')

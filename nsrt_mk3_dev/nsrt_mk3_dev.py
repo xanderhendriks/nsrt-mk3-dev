@@ -21,22 +21,22 @@ class NsrtMk3Dev:
 
         #: DB_A
         DB_A = 1
-        
+
         #: DB_Z
         DB_Z = 2
 
     def __init__(self, port: str):
         """Initialise the NSRT mk3 Dev class
-        
+
         Args:
             port: Virtual commport that was assigned to the NSRT by the OS (eg: COM12, /dev/ttyACM0)
         """
         self.serial = serial.Serial(port=port)
 
-    def _command_reply(self, command: int, address: int, count: int, data=None) -> bytearray:
+    def _command_reply(self, command: int, address: int, count: int, data=[]) -> bytearray:
         """Private function for sending the commands and reveing the reply. Used by the API functions to reduce boiler
         plating.
-        
+
         Args:
             command: The command indicates the data transmitted or operation performed. The indicated direction
                      of transmission is host-centric.
@@ -54,7 +54,7 @@ class NsrtMk3Dev:
             is a Write, and therefore does not require a data response from the device. When the command is a
             Read, the actual data sent back to the host serves that purpose
         """
-        packed_data = list(struct.pack('<LLL', command, address, count)) + (list(data) if data is not None else [])
+        packed_data = list(struct.pack('<LLL', command, address, count)) + list(data)
 
         self.serial.write(packed_data)
 
@@ -106,8 +106,8 @@ class NsrtMk3Dev:
         """This command selects the weighting curve
 
         Args:
-           Weighting curve: DB_C / DB_A / DB_Z 
-        
+           Weighting curve: DB_C / DB_A / DB_Z
+
         Returns:
             True if succeeded otherwise False
         """
@@ -117,7 +117,7 @@ class NsrtMk3Dev:
 
     def read_fs(self) -> int:
         """This command reads the current sampling frequency
-        
+
         Returns:
             Sampling frequency in Hz
         """
@@ -130,7 +130,7 @@ class NsrtMk3Dev:
 
         Args:
             Sampling frequency in Hz
-        
+
         Returns:
             True if succeeded otherwise False
 
@@ -168,7 +168,7 @@ class NsrtMk3Dev:
         return reply[0] == self.ACK
 
     def read_model(self):
-        """This command reads the model 
+        """This command reads the model
 
         Returns:
             ASCII string representing the Model
@@ -237,24 +237,9 @@ class NsrtMk3Dev:
             ValueError: if the given string is longer than 31 characters
         """
         if len(user_id) >= 32:
-            raise ValueError(f'Maximum length for the user id is 31 characters')
-        
+            raise ValueError('Maximum length for the user id is 31 characters')
+
         zero_terminated_string = (user_id + '\x00').encode('utf-8')
         reply = self._command_reply(0x00000036, 0, 1, zero_terminated_string)
 
         return reply[0] == self.ACK
-
-if __name__ == '__main__':
-    nsrt = nsrt_mk3_dev.NsrtMk3Dev('/dev/ttyACM0')
-    model = nsrt.read_model()
-    serial_number  = nsrt.read_sn()
-    firmware_revision = nsrt.read_fw_rev()
-    date_of_birth = nsrt.read_dob()
-    date_of_calibration = nsrt.read_doc()
-    print(f'Sound level meter model: {model} connected with serial number: {serial_number}, firmware revision number: '
-           '{firmware_revision}, manufactured on: {date_of_birth} and calibrated on: {date_of_calibration}')
-
-    leq_level = nsrt.read_leq()
-    weighting = nsrt.read_weighting()
-    weighted_level = nsrt.read_level()
-    print(f'current leq level: {sound_level} dB, {weighting} weighted value: {weighted_level}')
