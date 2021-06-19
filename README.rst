@@ -61,3 +61,11 @@ Usage
        weighting = nsrt.read_weighting()
        weighted_level = nsrt.read_level()
        print(f'current leq level: {leq_level:0.2f} dB, {weighting} value: {weighted_level:0.2f}')
+
+Test
+----
+The GIT repo contains a pytest which tests all the API functions. The test_device_parameters testcase will need to be 
+updated to the device under test as it reads out device specific data. To execute the test run the following command 
+in the GIT repo's root directory::
+
+    pytest tests

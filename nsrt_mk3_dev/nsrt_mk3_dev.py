@@ -58,7 +58,7 @@ class NsrtMk3Dev:
 
         self.serial.write(packed_data)
 
-        return self.serial.read(count)
+        return self.serial.read(count if (command & 0x80000000) == 0x80000000 else 1)
 
     def read_level(self) -> float:
         """This command retrieves the current running level in dB. That is an exponentially averaged level, using the time
@@ -240,6 +240,6 @@ class NsrtMk3Dev:
             raise ValueError('Maximum length for the user id is 31 characters')
 
         zero_terminated_string = (user_id + '\x00').encode('utf-8')
-        reply = self._command_reply(0x00000036, 0, 1, zero_terminated_string)
+        reply = self._command_reply(0x00000036, 0, len(zero_terminated_string), zero_terminated_string)
 
         return reply[0] == self.ACK

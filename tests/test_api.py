@@ -25,6 +25,8 @@ def test_weighting(nsrt, weighting):
     time.sleep(2)
 
     level = nsrt.read_level()
+    print(f'level: {level}')
+
     assert 30 < level < 70
     assert nsrt.read_weighting() == weighting
 
@@ -49,21 +51,35 @@ def test_tau(nsrt, tau):
     assert nsrt.read_tau() == tau
 
 
+def test_model(nsrt):
+    assert nsrt.read_model() == 'NSRT_mk3_Dev_Audio'
+
+
 def test_device_parameters(nsrt):
-    model = nsrt.read_model()
     serial_number = nsrt.read_sn()
     firmware_revision = nsrt.read_fw_rev()
     date_of_birth = nsrt.read_dob()
     date_of_calibration = nsrt.read_doc()
 
-    assert model == 'NSRT_mk3_Dev_Audio'
+    print(f'serial number: {serial_number}, firmware revision number: {firmware_revision}\n'
+          f'manufactured on: {date_of_birth}, calibrated on: {date_of_calibration}')
+
     assert serial_number == 'Anv8jF06W%0XCpFS60J5ND'
     assert firmware_revision == '1.0'
     assert date_of_birth == '2021-06-02 06:53:53'
     assert date_of_calibration == '2021-06-09 04:48:50'
 
 
-@pytest.mark.parametrize('user_id', ['S', 'SiteHive'])
+@pytest.mark.parametrize('user_id', ['NX Solutions', 'Convergence'])
 def test_user_id(nsrt, user_id):
     nsrt.write_user_id(user_id)
+
     assert nsrt.read_user_id() == user_id
+
+
+def test_user_id_exception(nsrt):
+    user_id = 32 * 'c'
+    with pytest.raises(ValueError) as exception_info:
+        nsrt.write_user_id(user_id)
+
+    assert str(exception_info.value) == 'Maximum length for the user id is 31 characters'

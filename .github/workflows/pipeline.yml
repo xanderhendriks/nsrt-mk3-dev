@@ -31,7 +31,7 @@ jobs:
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: build/sphinx/html # The folder the action should deploy.
       - name: Build a binary wheel and a source tarball
-        run: python setup.py sdist bdist_wheel --plat-name win32
+        run: python setup.py sdist bdist_wheel
       - name: Upload wheel file
         uses: actions/upload-artifact@v2
         with:
