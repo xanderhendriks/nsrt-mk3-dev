@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>nsrt-mk3-dev &mdash; nsrt_mk3_dev 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="nsrt_mk3_dev" href="autosummary/nsrt_mk3_dev.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> nsrt_mk3_dev
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="autosummary/nsrt_mk3_dev.html">nsrt_mk3_dev</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">nsrt_mk3_dev</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>nsrt-mk3-dev</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nsrt-mk3-dev">
+<h1>nsrt-mk3-dev<a class="headerlink" href="#nsrt-mk3-dev" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The NSRT_mk3_Dev is a new variant of the NSRT_mk3 series that introduces an open virtual Com port
+communication protocol. That means that the instrument can be used on any platform that has a generic
+driver to support the CDC (Communication) USB class. Nowadays most platforms support that class,
+including Windows, Mac and Linux.
+That instrument is targeted at developers. Because its communication protocol is open, developers can
+design their own application supporting the instrument.
+In addition to the Com port, the NSRT_mk3_Dev can have an optional USB Audio interface to stream
+the actual Audio signal captured by the microphone.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Connect the NSRT mk3 dev to the computer</p></li>
+<li><p>Check the virtual Com port under which it was enumerated:</p>
+<blockquote>
+<div><ol class="loweralpha">
+<li><p>Windows: WIN + type: Device Manager</p>
+<p>Look for the extra device:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">USB</span> <span class="n">Serial</span> <span class="n">Device</span> <span class="p">(</span><span class="n">COM20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Indicating the device can be found on COM20</p>
+</li>
+<li><p>Linux: type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dmesg</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">usb</span>
+</pre></div>
+</div>
+<p>and look for:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mf">22339.508035</span><span class="p">]</span> <span class="n">usb</span> <span class="mi">1</span><span class="o">-</span><span class="mf">1.2</span><span class="p">:</span> <span class="n">Product</span><span class="p">:</span> <span class="n">NSRT_mk3_Dev</span>
+<span class="p">[</span><span class="mf">22339.508044</span><span class="p">]</span> <span class="n">usb</span> <span class="mi">1</span><span class="o">-</span><span class="mf">1.2</span><span class="p">:</span> <span class="n">Manufacturer</span><span class="p">:</span> <span class="n">Convergence</span> <span class="n">Instruments</span>
+<span class="p">[</span><span class="mf">22339.520711</span><span class="p">]</span> <span class="n">cdc_acm</span> <span class="mi">1</span><span class="o">-</span><span class="mf">1.2</span><span class="p">:</span><span class="mf">1.1</span><span class="p">:</span> <span class="n">ttyACM0</span><span class="p">:</span> <span class="n">USB</span> <span class="n">ACM</span> <span class="n">device</span>
+</pre></div>
+</div>
+<p>Indicating that the device can be found on /dev/ttyACM0</p>
+</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Install the package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">nsrt</span><span class="o">-</span><span class="n">mk3</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a script to access the device:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nsrt_mk3_dev</span>
+
+<span class="n">nsrt</span> <span class="o">=</span> <span class="n">nsrt_mk3_dev</span><span class="o">.</span><span class="n">NsrtMk3Dev</span><span class="p">(</span><span class="s1">&#39;COM20&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nsrt</span><span class="o">.</span><span class="n">read_model</span><span class="p">()</span>
+
+<span class="n">serial_number</span>  <span class="o">=</span> <span class="n">nsrt</span><span class="o">.</span><span class="n">read_sn</span><span class="p">()</span>
+<span class="n">firmware_revision</span> <span class="o">=</span> <span class="n">nsrt</span><span class="o">.</span><span class="n">read_fw_rev</span><span class="p">()</span>
+<span class="n">date_of_birth</span> <span class="o">=</span> <span class="n">nsrt</span><span class="o">.</span><span class="n">read_dob</span><span class="p">()</span>
+<span class="n">date_of_calibration</span> <span class="o">=</span> <span class="n">nsrt</span><span class="o">.</span><span class="n">read_doc</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sound level meter model: </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+      <span class="sa">f</span><span class="s1">&#39;serial number: </span><span class="si">{</span><span class="n">serial_number</span><span class="si">}</span><span class="s1">, firmware revision number: </span><span class="si">{</span><span class="n">firmware_revision</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+      <span class="sa">f</span><span class="s1">&#39;manufactured on: </span><span class="si">{</span><span class="n">date_of_birth</span><span class="si">}</span><span class="s1">, calibrated on: </span><span class="si">{</span><span class="n">date_of_calibration</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">leq_level</span> <span class="o">=</span> <span class="n">nsrt</span><span class="o">.</span><span class="n">read_leq</span><span class="p">()</span>
+<span class="n">weighting</span> <span class="o">=</span> <span class="n">nsrt</span><span class="o">.</span><span class="n">read_weighting</span><span class="p">()</span>
+<span class="n">weighted_level</span> <span class="o">=</span> <span class="n">nsrt</span><span class="o">.</span><span class="n">read_level</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;current leq level: </span><span class="si">{</span><span class="n">leq_level</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1"> dB, </span><span class="si">{</span><span class="n">weighting</span><span class="si">}</span><span class="s1"> value: </span><span class="si">{</span><span class="n">weighted_level</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="test">
+<h2>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
+<p>The GIT repo contains a pytest which tests all the API functions. The test_device_parameters testcase will need to be
+updated to the device under test as it reads out device specific data. To execute the test run the following command
+in the GIT repo’s root directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="n">tests</span>
+</pre></div>
+</div>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/nsrt_mk3_dev.html#module-nsrt_mk3_dev" title="nsrt_mk3_dev"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nsrt_mk3_dev</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="autosummary/nsrt_mk3_dev.html" class="btn btn-neutral float-right" title="nsrt_mk3_dev" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Xander Hendriks.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+nsrt\_mk3\_dev.version
+======================
+
+.. automodule:: nsrt_mk3_dev.version
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

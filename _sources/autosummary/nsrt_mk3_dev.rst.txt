@@ -1,0 +1,33 @@
+﻿nsrt\_mk3\_dev
+==============
+
+.. automodule:: nsrt_mk3_dev
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+   nsrt_mk3_dev.nsrt_mk3_dev
+   nsrt_mk3_dev.version
+

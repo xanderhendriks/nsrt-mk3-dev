@@ -1,0 +1,48 @@
+nsrt\_mk3\_dev.nsrt\_mk3\_dev.NsrtMk3Dev
+========================================
+
+.. currentmodule:: nsrt_mk3_dev.nsrt_mk3_dev
+
+.. autoclass:: NsrtMk3Dev
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~NsrtMk3Dev.__init__
+      ~NsrtMk3Dev.read_dob
+      ~NsrtMk3Dev.read_doc
+      ~NsrtMk3Dev.read_fs
+      ~NsrtMk3Dev.read_fw_rev
+      ~NsrtMk3Dev.read_leq
+      ~NsrtMk3Dev.read_level
+      ~NsrtMk3Dev.read_model
+      ~NsrtMk3Dev.read_sn
+      ~NsrtMk3Dev.read_tau
+      ~NsrtMk3Dev.read_temperature
+      ~NsrtMk3Dev.read_user_id
+      ~NsrtMk3Dev.read_weighting
+      ~NsrtMk3Dev.write_fs
+      ~NsrtMk3Dev.write_tau
+      ~NsrtMk3Dev.write_user_id
+      ~NsrtMk3Dev.write_weighting
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~NsrtMk3Dev.ACK
+      ~NsrtMk3Dev.SECONDS_FROM_1904_TO_1970
+   
+   
