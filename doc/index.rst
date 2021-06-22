@@ -1,5 +1,8 @@
 .. include:: ../README.rst
 
+API
+---
+
 .. autosummary::
    :toctree: autosummary
    :template: custom-module-template.rst

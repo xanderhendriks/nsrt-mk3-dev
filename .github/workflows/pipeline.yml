@@ -22,7 +22,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create documentation
-        run: python setup.py build_sphinx
+        run: |
+          python setup.py build_sphinx
+          touch build/sphinx/html/.nojekyll
       - name: Publish documentation
         if: startsWith(github.ref, 'refs/tags')
         uses: JamesIves/github-pages-deploy-action@4.1.4
