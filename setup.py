@@ -19,7 +19,7 @@ long_description = (here / 'README.rst').read_text(encoding='utf-8')
 setup(
 
     name=name,
-    description='NX Solutions Work Log',
+    description='NSRT MK3 Dev Sound Level Meter',
     long_description=long_description,
     long_description_content_type='text/x-rst',
 
